@@ -2,15 +2,21 @@ class DiscussionsController < ApplicationController
   def index
     @discussions = Discussion.all
   end
-
+  
   def show
     @discussion = Discussion.find(params[:id])
   end
-
+  
   def new
     @discussion = Discussion.new
   end
-
+  
+  def create
+    discussion = Discussion.new
+    discussion.save!
+    redirect_to discussions_url, notice: "ディスカッションテーマ「#{@discussion.theme}」を登録しました。"
+  end
+  
   def edit
     @discussion = Discussion.find(params[:id])
   end
@@ -26,16 +32,9 @@ class DiscussionsController < ApplicationController
 　  discussion.destroy
 　  redirect_to discussions_url, notice: "ディスカッションテーマ「#{discussion.theme}」を削除しました。"
    end
-  
-  def create
-    discussion = Discussion.new
-    discussion.save!
-    redirect_to discussions_url, notice: "ディスカッションテーマ「#{discussion.theme}」を登録しました。"
-  end
-  
-  private
+   
+ private
   def discussion_params
     params.require(:discussion).permit(:theme, :discription)
   end
-  
 end
