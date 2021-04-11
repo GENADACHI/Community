@@ -6,8 +6,8 @@ p Find me in app/views/discussions/new.html.slim
 
 = form_with model: @discussion, local: true do |f| 
  .form-group
- = f.label :name
- = f.text_field :name, class: 'form-control', id: 'discussion_name' 
+ = f.label :theme
+ = f.text_field :theme, class: 'form-control', id: 'discussion_theme' 
 
  .form-gruop 
  = f.label :description 

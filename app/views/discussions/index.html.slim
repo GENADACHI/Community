@@ -12,7 +12,7 @@ table.table.table-hover
   tbody
    - @discussions.each do |discussion|
      tr
-       td = discussion.theme
+       td = link_to discussion.theme, discussion
        td = discussion.created_at
        td
          = link_to '編集', edit_discussion_path(discussion), class: 'btn btn-primary mr-3'
